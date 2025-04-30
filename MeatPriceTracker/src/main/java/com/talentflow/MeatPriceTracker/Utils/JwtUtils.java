@@ -1,5 +1,6 @@
 package com.talentflow.MeatPriceTracker.Utils;
 
+import com.talentflow.MeatPriceTracker.Entity.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -29,9 +30,10 @@ public class JwtUtils {
     }
 
 
-    public String generateJwtToken(String email){
+    public String generateJwtToken(User user){
         return Jwts.builder()
-                .setSubject(email)
+                .setSubject(user.getEmail())
+                .claim("role", user.getRole())   //Add Role Claim
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)

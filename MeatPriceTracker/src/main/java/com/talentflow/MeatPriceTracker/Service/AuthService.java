@@ -25,7 +25,7 @@ public class AuthService {
         if(optionalUser.isPresent()){
             User user = optionalUser.get();
             if(passwordEncoder.matches(password, user.getPassword())){  //In real world, you would hash+verify using Bcrypt
-                return jwtUtils.generateJwtToken(email);
+                return jwtUtils.generateJwtToken(user);
             }else {
                 throw new RuntimeException("Invalid Password");
             }

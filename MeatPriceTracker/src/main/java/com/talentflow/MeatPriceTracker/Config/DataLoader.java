@@ -1,4 +1,4 @@
-package com.talentflow.MeatPriceTracker.Security;
+package com.talentflow.MeatPriceTracker.Config;
 
 import com.talentflow.MeatPriceTracker.Entity.User;
 import com.talentflow.MeatPriceTracker.Repository.UserRepo;
