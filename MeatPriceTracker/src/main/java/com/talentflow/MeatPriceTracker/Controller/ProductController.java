@@ -4,6 +4,7 @@ import com.talentflow.MeatPriceTracker.Entity.Product;
 import com.talentflow.MeatPriceTracker.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")    //Only Users with ADMIN access can delete the products
     public String deleteProduct(@PathVariable long id){
         productService.deleteProduct(id);
         return "Product deleted Successfully";
