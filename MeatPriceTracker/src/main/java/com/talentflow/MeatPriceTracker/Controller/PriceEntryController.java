@@ -3,6 +3,7 @@ package com.talentflow.MeatPriceTracker.Controller;
 import com.talentflow.MeatPriceTracker.Entity.PriceEntry;
 import com.talentflow.MeatPriceTracker.Service.PriceEntryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -27,6 +28,7 @@ public class PriceEntryController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deletePrice(@PathVariable long id){
         priceEntryService.deletePriceEntry(id);
         return "Price Entry deleted";
