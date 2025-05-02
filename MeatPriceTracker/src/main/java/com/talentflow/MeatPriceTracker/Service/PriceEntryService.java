@@ -2,7 +2,6 @@ package com.talentflow.MeatPriceTracker.Service;
 
 import com.talentflow.MeatPriceTracker.Entity.PriceEntry;
 import com.talentflow.MeatPriceTracker.Entity.Product;
-import com.talentflow.MeatPriceTracker.Entity.User;
 import com.talentflow.MeatPriceTracker.Entity.Vendor;
 import com.talentflow.MeatPriceTracker.Repository.PriceEntryRepo;
 import com.talentflow.MeatPriceTracker.Repository.ProductRepo;
@@ -40,8 +39,8 @@ public class PriceEntryService {
 
         PriceEntry createdPriceEntry = priceEntryRepo.save(priceEntry);
 
-        // 📝 Log the deletion
-        String detail = "Deleted price entry for product: " + createdPriceEntry.getProduct().getProductName() +
+        // 📝 Log the Creation
+        String detail = "Created price entry for product: " + createdPriceEntry.getProduct().getProductName() +
                 ", vendor: " + createdPriceEntry.getVendor().getVendorName() +
                 ", price: $" + createdPriceEntry.getPrice();
 
